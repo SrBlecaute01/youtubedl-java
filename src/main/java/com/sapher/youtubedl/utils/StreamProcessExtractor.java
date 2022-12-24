@@ -4,6 +4,7 @@ import com.sapher.youtubedl.DownloadProgressCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,13 +12,13 @@ public class StreamProcessExtractor extends Thread {
     private static final String GROUP_PERCENT = "percent";
     private static final String GROUP_MINUTES = "minutes";
     private static final String GROUP_SECONDS = "seconds";
-    private InputStream stream;
+    private InputStreamReader stream;
     private StringBuffer buffer;
     private final DownloadProgressCallback callback;
 
     private Pattern p = Pattern.compile("\\[download\\]\\s+(?<percent>\\d+\\.\\d)% .* ETA (?<minutes>\\d+):(?<seconds>\\d+)");
 
-    public StreamProcessExtractor(StringBuffer buffer, InputStream stream, DownloadProgressCallback callback) {
+    public StreamProcessExtractor(StringBuffer buffer, InputStreamReader stream, DownloadProgressCallback callback) {
         this.stream = stream;
         this.buffer = buffer;
         this.callback = callback;

@@ -2,13 +2,14 @@ package com.sapher.youtubedl.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class StreamGobbler extends Thread {
 
-    private InputStream stream;
+    private InputStreamReader stream;
     private StringBuffer buffer;
 
-    public StreamGobbler(StringBuffer buffer, InputStream stream) {
+    public StreamGobbler(StringBuffer buffer, InputStreamReader stream) {
         this.stream = stream;
         this.buffer = buffer;
         start();
