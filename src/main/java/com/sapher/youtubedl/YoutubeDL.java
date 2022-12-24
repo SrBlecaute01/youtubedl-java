@@ -98,11 +98,8 @@ public class YoutubeDL {
             try (final var outStream = new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8);
                  final var errStream = new InputStreamReader(process.getErrorStream(), StandardCharsets.UTF_8)) {
 
-                final var stdOutProcessor = new StreamProcessExtractor(outBuffer, outStream, callback);
-                final var stdErrProcessor = new StreamGobbler(errBuffer, errStream);
-
-                stdOutProcessor.join();
-                stdErrProcessor.join();
+                new StreamProcessExtractor(outBuffer, outStream, callback).join();
+                new StreamGobbler(errBuffer, errStream).join();
 
                 final var out = outBuffer.toString();
                 final var err = errBuffer.toString();
