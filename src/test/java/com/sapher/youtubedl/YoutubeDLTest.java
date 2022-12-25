@@ -34,7 +34,7 @@ public class YoutubeDLTest {
         request.setOption("version");
         YoutubeDLResponse response = YoutubeDL.execute(request);
 
-        int elapsedTime = (int) (System.nanoTime() - startTime);
+        long elapsedTime = System.nanoTime() - startTime;
 
         Assert.assertTrue(elapsedTime > response.getElapsedTime());
     }

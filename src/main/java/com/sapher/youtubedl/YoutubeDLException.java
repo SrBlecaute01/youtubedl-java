@@ -1,37 +1,29 @@
 package com.sapher.youtubedl;
 
+import lombok.NonNull;
+
 /**
- * YoutubeDL Exception
+ * The YoutubeDlException is called when an error occurs
+ * during the execution of the youtube-dl.
  */
-public class YoutubeDLException extends Exception {
+public class YoutubeDLException extends RuntimeException {
 
     /**
-     * Exception message
+     * Construct YoutubeDLException with a message.
+     *
+     * @param message The message.
      */
-    private String message;
-
-    /**
-     * Construct YoutubeDLException with a message
-     * @param message
-     */
-    public YoutubeDLException(String message) {
-        this.message = message;
+    public YoutubeDLException(@NonNull String message) {
+        super(message);
     }
 
     /**
-     * Construct YoutubeDLException from another exception
-     * @param e Any exception
+     * Construct YoutubeDLException from another exception.
+     *
+     * @param exception An exception.
      */
-    public YoutubeDLException(Exception e) {
-        message = e.getMessage();
+    public YoutubeDLException(@NonNull Exception exception) {
+        super(exception.getMessage());
     }
 
-    /**
-     * Get exception message
-     * @return exception message
-     */
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

@@ -106,9 +106,9 @@ public class YoutubeDL {
                 final var out = outBuffer.toString();
                 final var err = errBuffer.toString();
 
-                int exitCode = process.waitFor();
-                int elapsedTime = (int) ((System.nanoTime() - startTime) / 1000000);
+                long elapsedTime = (System.nanoTime() - startTime) / 1000000;
 
+                int exitCode = process.waitFor();
                 if (exitCode > 0) {
                     throw new YoutubeDLException(err);
                 }

@@ -1,5 +1,8 @@
 package com.sapher.youtubedl;
 
+/**
+ * Represents the youtube-dl download progress.
+ */
 @FunctionalInterface
 public interface DownloadProgressCallback {
 
