@@ -1,29 +1,26 @@
 package com.sapher.youtubedl.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import lombok.NonNull;
+
+import java.io.BufferedReader;
 
 public class StreamGobbler extends Thread {
 
-    private InputStreamReader stream;
-    private StringBuffer buffer;
+    private final BufferedReader reader;
+    private final StringBuffer buffer;
 
-    public StreamGobbler(StringBuffer buffer, InputStreamReader stream) {
-        this.stream = stream;
+    public StreamGobbler(@NonNull StringBuffer buffer, @NonNull BufferedReader reader) {
+        this.reader = reader;
         this.buffer = buffer;
-        start();
+        this.start();
     }
 
     public void run() {
         try {
-            int nextChar;
-            while((nextChar = this.stream.read()) != -1) {
-                this.buffer.append((char) nextChar);
-            }
-        }
-        catch (IOException e) {
+            reader.lines().forEach(line -> this.buffer
+                    .append(line)
+                    .append(System.lineSeparator()));
 
-        }
+        } catch (Exception ignored) {}
     }
 }

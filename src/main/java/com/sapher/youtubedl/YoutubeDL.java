@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -94,9 +95,10 @@ public class YoutubeDL {
         try {
             final var startTime = System.nanoTime();
             final var process = processBuilder.start();
+            final var charset = StandardCharsets.UTF_8;
 
-            try (final var outStream = new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8);
-                 final var errStream = new InputStreamReader(process.getErrorStream(), StandardCharsets.UTF_8)) {
+            try (final var outStream = new BufferedReader(new InputStreamReader(process.getInputStream(), charset));
+                 final var errStream = new BufferedReader(new InputStreamReader(process.getErrorStream(), charset))) {
 
                 new StreamProcessExtractor(outBuffer, outStream, callback).join();
                 new StreamGobbler(errBuffer, errStream).join();

@@ -101,4 +101,5 @@ public class YoutubeDLTest {
     public void testFailGetNonExistentVideoInfo() throws YoutubeDLException {
         YoutubeDL.getVideoInfo(NONE_EXISTENT_VIDEO_URL);
     }
+
 }
