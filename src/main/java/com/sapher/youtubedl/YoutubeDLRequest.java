@@ -1,111 +1,141 @@
 package com.sapher.youtubedl;
 
+import lombok.NonNull;
 import java.util.*;
 
 /**
- * YoutubeDL request
+ * Represent the request to be sent to the youtube-dl.
  */
 public class YoutubeDLRequest {
 
-    /**
-     * Executable working directory
-     */
     private String directory;
-
-    /**
-     * Video Url
-     */
     private String url;
 
-    /**
-     * List of executable options
-     */
-    private Map<String, String> options = new HashMap<String, String>();
+    private final Map<String, String> options = new HashMap<>();
 
+    /**
+     * Construct a request with empty options.
+     */
+    public YoutubeDLRequest() {}
+
+    /**
+     * Construct a request with a video url.
+     *
+     * @param url The video url.
+     */
+    public YoutubeDLRequest(@NonNull String url) {
+        this.url = url;
+    }
+
+    /**
+     * Construct a request with a video url and working directory
+     *
+     * @param url The video url.
+     * @param directory The working directory.
+     */
+    public YoutubeDLRequest(@NonNull String url, @NonNull String directory) {
+        this.url = url;
+        this.directory = directory;
+    }
+
+    /**
+     * Get the working directory.
+     *
+     * @return The working directory.
+     */
     public String getDirectory() {
         return directory;
     }
 
+    /**
+     * Set the working directory.
+     *
+     * @param directory The working directory.
+     */
     public void setDirectory(String directory) {
         this.directory = directory;
     }
 
+    /**
+     * Get video url.
+     *
+     * @return The video url.
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Set video url.
+     *
+     * @param url The video url.
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * Get request options.
+     *
+     * @return The options map.
+     */
     public Map<String, String> getOption() {
         return options;
     }
 
-    public void setOption(String key) {
+    /**
+     * Set request option.
+     *
+     * @param key The option.
+     */
+    public void setOption(@NonNull String key) {
         options.put(key, null);
     }
 
-    public void setOption(String key, String value) {
+    /**
+     * Set request option with value.
+     *
+     * @param key The option.
+     * @param value The value.
+     */
+    public void setOption(@NonNull String key, @NonNull String value) {
         options.put(key, value);
     }
 
-    public void setOption(String key, int value) {
+    /**
+     * Set the request option with int value.
+     *
+     * @param key The option.
+     * @param value The value.
+     */
+    public void setOption(@NonNull String key, int value) {
         options.put(key, String.valueOf(value));
     }
 
     /**
-     * Constructor
+     * Remove the request option.
+     *
+     * @param key The option.
      */
-    public YoutubeDLRequest() {
-
+    public void removeOption(@NonNull String key) {
+        options.remove(key);
     }
 
     /**
-     * Construct a request with a videoUrl
-     * @param url
-     */
-    public YoutubeDLRequest(String url) {
-        this.url = url;
-    }
-
-    /**
-     * Construct a request with a videoUrl and working directory
-     * @param url
-     * @param directory
-     */
-    public YoutubeDLRequest(String url, String directory) {
-        this.url = url;
-        this.directory = directory;
-    }
-
-    /**
-     * Transform options to a string that the executable will execute
-     * @return Command string
+     * Transform options to a string that the executable will execute.
+     *
+     * @return The command string.
      */
     protected String buildOptions() {
-
-        StringBuilder builder = new StringBuilder();
-
-        // Set Url
-        if(url != null)
-            builder.append(url + " ");
-
-        // Build options strings
-        Iterator it = options.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry option = (Map.Entry) it.next();
-
-            String name = (String) option.getKey();
-            String value = (String) option.getValue();
-
-            if(value == null) value = "";
-
-            String optionFormatted = String.format("--%s %s", name, value).trim();
-            builder.append(optionFormatted + " ");
-
-            it.remove();
+        final var builder = new StringBuilder();
+        if (url != null) {
+            builder.append(url).append(" ");
         }
+
+        this.options.forEach((key, value) -> {
+            String option = String.format("--%s %s", key, value == null ? "" : value).trim();
+            builder.append(option).append(" ");
+        });
 
         return builder.toString().trim();
     }

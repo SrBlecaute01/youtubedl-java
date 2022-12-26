@@ -16,4 +16,5 @@ public class HttpHeader {
     public String accept;
     @JsonProperty("User-Agent")
     public String userAgent;
+
 }
