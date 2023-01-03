@@ -91,6 +91,6 @@ YoutubeDLResponse response = YoutubeDL.execute(request, new DownloadProgressCall
 });
 ```
 
-# Useful links
+## Useful links
 
 -   [yt-dlp documentation](https://github.com/yt-dlp/yt-dlp/wiki)
