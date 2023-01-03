@@ -33,6 +33,14 @@
         <jackson.version>2.14.1</jackson.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/srblecaute01/youtubedl-java</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.jetbrains</groupId>
