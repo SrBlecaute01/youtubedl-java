@@ -10,8 +10,8 @@
     <packaging>jar</packaging>
 
     <name>YoutubeDL wrapper</name>
-    <description>Java wrapper for youtube-dl executable</description>
-    <url>https://github.com/sapher/youtubedl-java</url>
+    <description>Java wrapper for yt-dlp executable</description>
+    <url>https://github.com/SrBlecaute01/youtubedl-java</url>
 
     <licenses>
         <license>
