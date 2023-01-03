@@ -1,48 +1,62 @@
-# youtubedl-java [![Build Status](https://travis-ci.org/sapher/youtubedl-java.svg?branch=master)](https://travis-ci.org/sapher/youtubedl-java)
+<div align="center">
+    <h1 align="center">youtubedl-java</h1>
+    <a target="_blank" href="https://jitpack.io/#srblecaute01/youtubedl-java">
+        <img src="https://img.shields.io/jitpack/v/github/SrBlecaute01/youtubedl-javar?label=Snapshots&color=lime_green/" alt="Jitpack">
+    </a>
+</div>
 
-A simple java wrapper for [youtube-dl](https://github.com/rg3/youtube-dl) executable
+A simple java wrapper for [yt-dlp](https://github.com/yt-dlp/yt-dlp) executable
 
-There's a lot of thing left to do. Parsing output is one of them. Too bad, youtube-dl doesn't output formatted data.
+There's a lot of thing left to do. Parsing output is one of them. Too bad, yt-dlp doesn't output formatted data.
 
-# Prerequisite
+## Prerequisites 
 
-:warning: Youtube-dl should be installed and available in your `$PATH.
+For installation, you need:
 
-[How to properly install YoutubeDL executable](https://rg3.github.io/youtube-dl/download.html)
+-   yt-dlp installed and available in the environment variables.
+-   Java 17 or higher.
 
-Otherwise you will get this error :
+[How to properly install yt-dlp executable](https://github.com/yt-dlp/yt-dlp/wiki/Installation)
 
-`Cannot run program "youtube-dl" (in directory "/Users/my/beautiful/path"): error=2, No such file or directory`
-
-# Usage
 
 ## Installation
 
-You can use jitpack.io to add the library to your project.
-
-[youtube-dl](https://jitpack.io/#sapher/youtubedl-java)
+You can use [jitpack.io](https://jitpack.io/#srblecaute01/youtubedl-java) to add the library to your project.
 
 ### Gradle
 
-*Step 1 :* Add jitpack repository to your build file
-
-```
+```gradle
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
     }
 }
-```
 
-*Step 2:* Add the dependency
-
-```
 dependencies {
-    compile 'com.github.sapher:youtubedl-java:1.+'
+        implementation 'com.github.srblecaute01:youtubedl-java:${VERSION}'
 }
 ```
 
-## Make request
+### Maven
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+        
+<dependencies>
+    <dependency>
+        <groupId>com.github.srblecaute01</groupId>
+        <artifactId>youtubedl-java</artifactId>
+        <version>${VERSION}</version>
+    </dependency>
+</dependencies>
+```
+
+## Making requests
 
 ```java
 // Video url to download
@@ -66,14 +80,15 @@ String stdOut = response.getOut(); // Executable output
 
 You may also specify a callback to get notified about the progress of the download:
 
-```
-...
+```java
 YoutubeDLResponse response = YoutubeDL.execute(request, new DownloadProgressCallback() {
-          @Override
-          public void onProgressUpdate(float progress, long etaInSeconds) {
-              System.out.println(String.valueOf(progress) + "%");
-          }
-      });
+      @Override
+      public void onProgressUpdate(float progress, long etaInSeconds) {
+          System.out.println(String.valueOf(progress) + "%");
+      }
+});
 ```
-# Links
-* [Youtube-dl documentation](https://github.com/sapher/youtubedl-java)
+
+# Useful links
+
+-   [yt-dlp documentation](https://github.com/yt-dlp/yt-dlp/wiki)
