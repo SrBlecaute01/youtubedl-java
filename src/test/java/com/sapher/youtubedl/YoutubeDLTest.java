@@ -42,14 +42,13 @@ public class YoutubeDLTest {
 
     @Test
     public void testSimulateDownload() throws YoutubeDLException {
-
         YoutubeDLRequest request = new YoutubeDLRequest();
         request.setUrl(VIDEO_URL);
         request.setOption("simulate");
 
         YoutubeDLResponse response = YoutubeDL.execute(request);
 
-        Assert.assertEquals("youtube-dl " + VIDEO_URL + " --simulate", response.getCommand());
+        Assert.assertEquals(YoutubeDL.getExecutablePath() + " " + VIDEO_URL + " --simulate", response.getCommand());
     }
 
     @Test
