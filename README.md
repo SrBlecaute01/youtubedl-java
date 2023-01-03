@@ -1,9 +1,9 @@
-<div align="center">
-    <h1 align="center">youtubedl-java</h1>
+<h1 align="center">
+    <p>youtubedl-java</p>
     <a target="_blank" href="https://jitpack.io/#srblecaute01/youtubedl-java">
         <img src="https://img.shields.io/jitpack/v/github/SrBlecaute01/youtubedl-javar?label=Snapshots&color=lime_green/" alt="Jitpack">
     </a>
-</div>
+</h1>
 
 A simple java wrapper for [yt-dlp](https://github.com/yt-dlp/yt-dlp) executable
 
