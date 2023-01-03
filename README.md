@@ -7,7 +7,8 @@
 
 A simple java wrapper for [yt-dlp](https://github.com/yt-dlp/yt-dlp) executable
 
-There's a lot of thing left to do. Parsing output is one of them. Too bad, yt-dlp doesn't output formatted data.
+There's a lot of thing left to do. Parsing output is one of them. 
+Too bad, yt-dlp doesn't output formatted data.
 
 ## Prerequisites 
 
@@ -21,7 +22,8 @@ For installation, you need:
 
 ## Installation
 
-You can use [jitpack.io](https://jitpack.io/#srblecaute01/youtubedl-java) to add the library to your project.
+You can use [jitpack.io](https://jitpack.io/#srblecaute01/youtubedl-java) 
+to add the library to your project.
 
 ### Gradle
 
