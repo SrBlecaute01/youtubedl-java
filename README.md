@@ -1,7 +1,7 @@
 <h1 align="center">
     <p>youtubedl-java</p>
     <a target="_blank" href="https://jitpack.io/#srblecaute01/youtubedl-java">
-        <img src="https://img.shields.io/jitpack/v/github/SrBlecaute01/youtubedl-javar?label=Snapshots&color=lime_green/" alt="Jitpack">
+        <img src="https://img.shields.io/jitpack/v/github/srblecaute01/youtubedl-java?label=Snapshots&color=lime_green/" alt="Jitpack">
     </a>
 </h1>
 
